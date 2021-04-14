@@ -38,7 +38,7 @@ export function TenisApp() {
     disableIfIsWinned();
     let ul: any = document.getElementById("score-list");
     let li: any = document.createElement("li");
-    li.className = "list-group-item text-dark fw-light";
+    li.className = "list-group-item text-white bg-success";
     li.appendChild(document.createTextNode(GAME.getScore().toString()));
     ul.appendChild(li);
   }
@@ -49,7 +49,7 @@ export function TenisApp() {
 
   if (isStarted) {
     return (
-      <div className="container mt-5 col-6">
+      <div className="alert alert-success">
         <form id="formNewTenis" onSubmit={newGame}>
           <div className="row">
             <div className="col">
@@ -77,11 +77,11 @@ export function TenisApp() {
             </div>
           </div>
           <br />
-          <div className="card align-items-center">
-            <div className="card-block text-center">
+          <div className="card align-items-center text-white bg-success">
+            <div className="card-block text-center ">
               <h4 className="card-title">SCORE</h4>
             </div>
-            <ul className="list-group list-group-flush" id="score-list"></ul>
+            <ul className="list-group list-group-flush " id="score-list"></ul>
           </div>
           <br />
           <div className="d-flex justify-content-center">
@@ -94,7 +94,7 @@ export function TenisApp() {
     );
   } else {
     return (
-      <div className="container mt-5 col-6">
+      <div className="alert alert-success">
         <form id="formTenis" onSubmit={handleSubmit}>
           <div className="row">
             <div className="col">

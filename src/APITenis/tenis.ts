@@ -3,6 +3,8 @@ export class TennisGame {
   private playerTwoScore: number = 0;
   private playerTwoName: string = "";
   private playerOneName: string = "";
+  private maxScore: number = 40;
+  private addScore: number = 15;
 
   public constructor(playerOneName: string, playerTwoName: string) {
     this.playerOneName = playerOneName;
@@ -26,14 +28,14 @@ export class TennisGame {
 
     return (
       this.translateScore(this.playerOneScore) +
-      "," +
+      " - " +
       this.translateScore(this.playerTwoScore)
     );
   }
 
   private isDeuce(): boolean {
     return (
-      this.playerOneScore >= 3 && this.playerTwoScore === this.playerOneScore
+      this.playerOneScore >= 30 && this.playerTwoScore === this.playerOneScore
     );
   }
 
@@ -47,13 +49,13 @@ export class TennisGame {
 
   private hasWinner(): boolean {
     if (
-      this.playerTwoScore >= 4 &&
-      this.playerTwoScore >= this.playerOneScore + 2
+      this.playerTwoScore >= this.maxScore &&
+      this.playerTwoScore >= this.playerOneScore + 30
     )
       return true;
     if (
-      this.playerOneScore >= 4 &&
-      this.playerOneScore >= this.playerTwoScore + 2
+      this.playerOneScore >= this.maxScore &&
+      this.playerOneScore >= this.playerTwoScore + 30
     )
       return true;
     return false;
@@ -61,13 +63,13 @@ export class TennisGame {
 
   private hasAdvantage(): boolean {
     if (
-      this.playerTwoScore >= 4 &&
-      this.playerTwoScore === this.playerOneScore + 1
+      this.playerTwoScore >= this.maxScore &&
+      this.playerTwoScore === this.playerOneScore + this.addScore
     )
       return true;
     if (
-      this.playerOneScore >= 4 &&
-      this.playerOneScore === this.playerTwoScore + 1
+      this.playerOneScore >= this.maxScore &&
+      this.playerOneScore === this.playerTwoScore + this.addScore
     )
       return true;
 
@@ -75,20 +77,20 @@ export class TennisGame {
   }
 
   public playerOneScores() {
-    this.playerOneScore++;
+    this.playerOneScore += this.addScore;
   }
 
   public playerTwoScores() {
-    this.playerTwoScore++;
+    this.playerTwoScore += this.addScore;
   }
 
   private translateScore(score: number): string {
     switch (score) {
-      case 3:
+      case 40:
         return "Forty";
-      case 2:
+      case 30:
         return "Thirty";
-      case 1:
+      case 15:
         return "Fifteen";
       case 0:
         return "Love";
