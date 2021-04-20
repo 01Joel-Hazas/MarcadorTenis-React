@@ -1,6 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";
-import ReactDOM from "react-dom";
 import { TennisGame } from "./APITenis/tenis";
 
 export function TenisApp() {
@@ -9,6 +8,7 @@ export function TenisApp() {
   const [isStarted, setIsStarted] = useState(false);
   const GAME = new TennisGame(player1, player2);
   const [isWinned, setIsWinned] = useState(false);
+  const [score, setScore] = useState("");
 
   function handleSubmit(event: any) {
     event.preventDefault();
@@ -37,12 +37,7 @@ export function TenisApp() {
 
   function showScore() {
     disableIfIsWinned();
-    const element = (
-      <li className="list-group-item text-white bg-success">
-        {GAME.getScore().toString()}
-      </li>
-    );
-    ReactDOM.render(element, document.getElementById("score-list"));
+    setScore(GAME.getScore().toString());
   }
 
   function newGame() {
@@ -84,6 +79,7 @@ export function TenisApp() {
               <h4 className="card-title">SCORE</h4>
             </div>
             <ul className="list-group list-group-flush " id="score-list"></ul>
+            <li>{<strong> {score}</strong>} </li>
           </div>
           <br />
           <div className="d-flex justify-content-center">
