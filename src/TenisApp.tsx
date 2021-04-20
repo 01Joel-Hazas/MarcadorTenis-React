@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";
+import ReactDOM from "react-dom";
 import { TennisGame } from "./APITenis/tenis";
 
 export function TenisApp() {
@@ -36,11 +37,12 @@ export function TenisApp() {
 
   function showScore() {
     disableIfIsWinned();
-    let ul: any = document.getElementById("score-list");
-    let li: any = document.createElement("li");
-    li.className = "list-group-item text-white bg-success";
-    li.appendChild(document.createTextNode(GAME.getScore().toString()));
-    ul.appendChild(li);
+    const element = (
+      <li className="list-group-item text-white bg-success">
+        {GAME.getScore().toString()}
+      </li>
+    );
+    ReactDOM.render(element, document.getElementById("score-list"));
   }
 
   function newGame() {
