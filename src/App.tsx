@@ -1,13 +1,11 @@
 import "./App.css";
 import TenisApp from "./TenisApp";
+import Menu from "./Menu";
 function App() {
   return (
-    <div>
-      <body>
-        <h1 className="text-center alert alert-success"> TENNIS GAME </h1>
-        <hr />
-        <TenisApp />
-      </body>
+    <div className="App">
+      <Menu></Menu>
+      <TenisApp></TenisApp>
     </div>
   );
 }

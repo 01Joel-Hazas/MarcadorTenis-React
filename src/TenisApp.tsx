@@ -6,11 +6,11 @@ export function TenisApp() {
   const [player1, setPlayer1Name] = useState("");
   const [player2, setPlayer2Name] = useState("");
   const [isStarted, setIsStarted] = useState(false);
-  const GAME = new TennisGame(player1, player2);
   const [isWinned, setIsWinned] = useState(false);
   const [score, setScore] = useState("");
-
+  const [GAME, setGame] = useState(new TennisGame(player1, player2));
   function handleSubmit(event: any) {
+    setGame(new TennisGame(player1, player2));
     event.preventDefault();
     setPlayer1Name(event.target.elements.playerOneName.value);
     setPlayer2Name(event.target.elements.playerTwoName.value);
